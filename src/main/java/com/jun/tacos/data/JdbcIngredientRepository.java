@@ -28,13 +28,13 @@ public class JdbcIngredientRepository implements IngredientRepository {
 
 	@Override
 	public Ingredient save(Ingredient ingredient) {
-		// TODO Auto-generated method stub
-		return null;
+		jdbc.update("insert into Ingredient (id, name, type) values (?,?,?)", 
+				ingredient.getId(), ingredient.getName(), ingredient.getType().toString());
+		return ingredient;
 	}
 
 	private Ingredient mapRowToIngredient(ResultSet rs, int rowNum) throws SQLException {
 		return new Ingredient(rs.getString("id"), rs.getString("name"), Ingredient.Type.valueOf(rs.getString("type")));
 	}
-	
-	
+
 }

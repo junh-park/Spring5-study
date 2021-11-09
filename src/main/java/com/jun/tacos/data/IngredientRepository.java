@@ -1,9 +1,9 @@
 package com.jun.tacos.data;
 
-import org.springframework.data.repository.CrudRepository;
-
 import com.jun.tacos.Ingredient;
 
-public interface IngredientRepository extends CrudRepository<Ingredient, String> {
-
+public interface IngredientRepository {
+	public Iterable<Ingredient> findAll();
+	public Ingredient findOne(String id);
+	public Ingredient save(Ingredient ingredient);
 }
